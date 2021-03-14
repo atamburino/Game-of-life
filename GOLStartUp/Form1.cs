@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GOLStartUp
 {
+    // CELL COUNT FOR APP SET TO 30 BY 30 FOR UNIVERSE AND SCRATCHPAD 
     public partial class Form1 : Form
     {
         // The universe array
@@ -25,6 +27,9 @@ namespace GOLStartUp
 
         // Generation count
         int generations = 0;
+
+        // Seed 
+        int seed = 0;
 
         public Form1()
         {
@@ -53,16 +58,16 @@ namespace GOLStartUp
                     {
                         scratchPad[x, y] = false;
                     }
-                    else if (count > 3 && universe[x,y] == true)
+                    else if (count > 3 && universe[x, y] == true)
                     {
                         scratchPad[x, y] = false;
                     }
-                    else if (universe[x,y] == true && count == 2 || count == 3)
+                    else if (universe[x, y] == true && count == 2 || count == 3)
                     {
                         scratchPad[x, y] = true;
                     }
 
-                    if (universe[x,y] == false && count == 3)
+                    if (universe[x, y] == false && count == 3)
                     {
                         scratchPad[x, y] = true;
                     }
@@ -78,7 +83,7 @@ namespace GOLStartUp
             bool[,] temp = universe;
             universe = scratchPad;
             scratchPad = temp;
-           
+
 
             // Update status strip generations
             toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
@@ -90,7 +95,7 @@ namespace GOLStartUp
         {
             NextGeneration();
         }
-
+        // FORM PANEL BASE CODE 
         private void graphicsPanel1_Paint(object sender, PaintEventArgs e)
 
         {
@@ -138,7 +143,7 @@ namespace GOLStartUp
             gridPen.Dispose();
             cellBrush.Dispose();
         }
-
+        // CODE FOR TRACKING CLICKING ON THE APP FOR UNIVERSE 
         private void graphicsPanel1_MouseClick(object sender, MouseEventArgs e)
         {
             // If the left mouse button was clicked
@@ -161,7 +166,7 @@ namespace GOLStartUp
                 graphicsPanel1.Invalidate();
             }
         }
-
+        // CODE BELOW IS BUILD FOR COUNTING THE UNIVERSE (TORODIAL STYLE)
         private int CountNeighborsToroidal(int x, int y)
         {
             int count = 0;
@@ -176,7 +181,7 @@ namespace GOLStartUp
                     int yCheck = y + yOffset;
 
                     // if xOffset and yOffset are both equal to 0 then continue
-                    if(xOffset == 0 && yOffset == 0)
+                    if (xOffset == 0 && yOffset == 0)
                     {
                         continue;
                     }
@@ -211,27 +216,27 @@ namespace GOLStartUp
 
             return count;
         }
-
+        // EXIT MENU STRIP 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        // START MENU STRIP
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timer.Enabled = true;
         }
-
+        // START BUTTON 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             timer.Enabled = true;
         }
-
+        // STOP BUTTON 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             timer.Enabled = false;
         }
-
+        // NEW UNIVERSE MENU 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Iterate through the universe in the y, top to bottom
@@ -245,11 +250,63 @@ namespace GOLStartUp
             }
             graphicsPanel1.Invalidate();
         }
-
+        // NEW UNIVERSE MENU BUTTON 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             NextGeneration();
             graphicsPanel1.Invalidate();
+        }
+
+        // Modal Menu //////////////////////////////////////////////////////
+        // seed
+        private void seedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModelDialog dlg = new ModelDialog();
+            dlg.SetNumber(seed);
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                seed = dlg.GetNumber();
+                Random rand = new Random(seed);
+
+                for (int y = 0; y < universe.GetLength(1); y++)
+                {
+                    for (int x = 0; x < universe.GetLength(0); x++)
+                    {
+                        int seed = rand.Next(0, 3);
+                        if (seed == 0)
+                        {
+                            universe[x, y] = true;
+                        }
+                        else
+                        {
+                            universe[x, y] = false;
+                        }
+                    }
+                }
+            }
+            graphicsPanel1.Invalidate();
+        }
+        // time
+        private void timeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+
+            for (int y = 0; y < universe.GetLength(1); y++)
+            {
+                for (int x = 0; x < universe.GetLength(0); x++)
+                {
+                    int seed = rand.Next(0, 3);
+                    if (seed == 0)
+                    {
+                        universe[x, y] = true;
+                    }
+                    else
+                    {
+                        universe[x, y] = false;
+                    }
+                    graphicsPanel1.Invalidate();
+                }
+            }
         }
     }
 }

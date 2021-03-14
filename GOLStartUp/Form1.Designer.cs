@@ -45,6 +45,10 @@ namespace GOLStartUp
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,15 +65,14 @@ namespace GOLStartUp
             this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelGenerations = new System.Windows.Forms.ToolStripStatusLabel();
-            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelGenerations = new System.Windows.Forms.ToolStripStatusLabel();
+            this.modalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsPanel1 = new GOLStartUp.GraphicsPanel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -82,6 +85,7 @@ namespace GOLStartUp
             this.fileToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.runToolStripMenuItem,
+            this.modalToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -199,6 +203,37 @@ namespace GOLStartUp
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // runToolStripMenuItem
+            // 
+            this.runToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startToolStripMenuItem,
+            this.stopToolStripMenuItem,
+            this.nextToolStripMenuItem});
+            this.runToolStripMenuItem.Name = "runToolStripMenuItem";
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.runToolStripMenuItem.Text = "&Run";
+            // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.startToolStripMenuItem.Text = "&Start";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
+            // 
+            // stopToolStripMenuItem
+            // 
+            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.stopToolStripMenuItem.Text = "&Stop";
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // nextToolStripMenuItem
+            // 
+            this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
+            this.nextToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.nextToolStripMenuItem.Text = "&Next";
+            this.nextToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -336,39 +371,6 @@ namespace GOLStartUp
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "He&lp";
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelGenerations});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 323);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(573, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabelGenerations
-            // 
-            this.toolStripStatusLabelGenerations.Name = "toolStripStatusLabelGenerations";
-            this.toolStripStatusLabelGenerations.Size = new System.Drawing.Size(90, 17);
-            this.toolStripStatusLabelGenerations.Text = "Generations = 0";
-            // 
-            // runToolStripMenuItem
-            // 
-            this.runToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem,
-            this.stopToolStripMenuItem,
-            this.nextToolStripMenuItem});
-            this.runToolStripMenuItem.Name = "runToolStripMenuItem";
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.runToolStripMenuItem.Text = "&Run";
-            // 
-            // startToolStripMenuItem
-            // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.startToolStripMenuItem.Text = "&Start";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
-            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -399,19 +401,44 @@ namespace GOLStartUp
             this.toolStripButton3.Text = "Next";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // stopToolStripMenuItem
+            // statusStrip1
             // 
-            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.stopToolStripMenuItem.Text = "&Stop";
-            this.stopToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelGenerations});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 323);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(573, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // nextToolStripMenuItem
+            // toolStripStatusLabelGenerations
             // 
-            this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
-            this.nextToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.nextToolStripMenuItem.Text = "&Next";
-            this.nextToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.toolStripStatusLabelGenerations.Name = "toolStripStatusLabelGenerations";
+            this.toolStripStatusLabelGenerations.Size = new System.Drawing.Size(90, 17);
+            this.toolStripStatusLabelGenerations.Text = "Generations = 0";
+            // 
+            // modalToolStripMenuItem
+            // 
+            this.modalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seedToolStripMenuItem,
+            this.timeToolStripMenuItem});
+            this.modalToolStripMenuItem.Name = "modalToolStripMenuItem";
+            this.modalToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.modalToolStripMenuItem.Text = "Modal";
+            // 
+            // seedToolStripMenuItem
+            // 
+            this.seedToolStripMenuItem.Name = "seedToolStripMenuItem";
+            this.seedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.seedToolStripMenuItem.Text = "Seed";
+            this.seedToolStripMenuItem.Click += new System.EventHandler(this.seedToolStripMenuItem_Click);
+            // 
+            // timeToolStripMenuItem
+            // 
+            this.timeToolStripMenuItem.Name = "timeToolStripMenuItem";
+            this.timeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.timeToolStripMenuItem.Text = "Time";
+            this.timeToolStripMenuItem.Click += new System.EventHandler(this.timeToolStripMenuItem_Click);
             // 
             // graphicsPanel1
             // 
@@ -490,6 +517,9 @@ namespace GOLStartUp
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nextToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem timeToolStripMenuItem;
     }
 }
 
