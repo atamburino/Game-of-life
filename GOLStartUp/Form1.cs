@@ -166,7 +166,8 @@ namespace GOLStartUp
                 graphicsPanel1.Invalidate();
             }
         }
-        // CODE BELOW IS BUILD FOR COUNTING THE UNIVERSE (TORODIAL STYLE)
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private int CountNeighborsToroidal(int x, int y)
         {
             int count = 0;
@@ -216,6 +217,9 @@ namespace GOLStartUp
 
             return count;
         }
+
+
+        ///// Tool Strip Main Drop Down ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // EXIT MENU STRIP 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -225,16 +229,6 @@ namespace GOLStartUp
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timer.Enabled = true;
-        }
-        // START BUTTON 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            timer.Enabled = true;
-        }
-        // STOP BUTTON 
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            timer.Enabled = false;
         }
         // NEW UNIVERSE MENU 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -250,6 +244,19 @@ namespace GOLStartUp
             }
             graphicsPanel1.Invalidate();
         }
+
+
+        ///// TOOL STRIP BUTTONS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // START BUTTON 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = true;
+        }
+        // STOP BUTTON 
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = false;
+        }
         // NEW UNIVERSE MENU BUTTON 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
@@ -257,7 +264,8 @@ namespace GOLStartUp
             graphicsPanel1.Invalidate();
         }
 
-        // Modal Menu //////////////////////////////////////////////////////
+
+        ///// MODEL MENU /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // seed
         private void seedToolStripMenuItem_Click(object sender, EventArgs e)
         {
