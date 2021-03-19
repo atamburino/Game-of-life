@@ -218,7 +218,10 @@ namespace GOLStartUp
             return count;
         }
 
-
+        //////////////////////////////////// CLICK EVENTS ////////////////////////// CLICK EVENTS //////////////////////////// CLICK EVENTS //////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////// Everything Below Powers The Click Events ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
         ///// Tool Strip Main Drop Down ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // EXIT MENU STRIP 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -333,6 +336,35 @@ namespace GOLStartUp
                 
             }
             dwg.Dispose();
+        }
+        // Forbackground Color
+        private void backColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (colorDialogBack.ShowDialog() == DialogResult.OK)
+            {
+                Properties.Settings.Default.FormBackground = colorDialogBack.Color;
+                this.BackColor = colorDialogBack.Color;
+            }
+        }
+        // Background color 
+        private void backColorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+        // Cell Color
+        private void cellColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        // Grid Color
+        private void gridColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        // MISS CLICK DEAD ARRAY
+       private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+       {
+
         }
     }
 }
