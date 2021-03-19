@@ -16,5 +16,37 @@ namespace GOLStartUp
         {
             InitializeComponent();
         }
+        // up down 1 
+        public int GetNumber1()
+        {
+            return (int)numericUpDown1.Value;
+        }
+
+        public void SetNumber1(int number)
+        {
+            numericUpDown1.Value = number;
+        }
+
+        // up down 2 
+        public int GetNumber2()
+        {
+            return (int)numericUpDown2.Value;
+        }
+
+        public void SetNumber2(int number)
+        {
+            numericUpDown2.Value = number;
+        }
+
+        // up down 3 
+        public int GetNumber3()
+        {
+            return (int)numericUpDown3.Value;
+        }
+
+        public void SetNumber3(int number)
+        {
+            numericUpDown3.Value = number;
+        }
     }
 }
