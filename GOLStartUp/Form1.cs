@@ -316,5 +316,23 @@ namespace GOLStartUp
                 }
             }
         }
+        //Settings//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        // Options 
+        private void opttionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Options dwg = new Options();
+            
+            if (dwg.ShowDialog(this) == DialogResult.OK)
+            {
+                
+                
+            }
+            else
+            {
+                
+            }
+            dwg.Dispose();
+        }
     }
 }
