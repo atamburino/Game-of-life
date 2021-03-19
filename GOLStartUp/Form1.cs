@@ -349,7 +349,12 @@ namespace GOLStartUp
         // Background color 
         private void backColorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (colorDialogBackgroundM.ShowDialog() == DialogResult.OK) ;
+            {
+                Color BackGroundC = colorDialogBackgroundM.Color;
+                graphicsPanel1.BackColor = BackGroundC;
 
+            }
         }
         // Cell Color
         private void cellColorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -359,7 +364,11 @@ namespace GOLStartUp
         // Grid Color
         private void gridColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (colorDialogGrid.ShowDialog() == DialogResult.OK) ;
+            {
+                Color Gridcolor = colorDialogGrid.Color;
 
+            }
         }
         // MISS CLICK DEAD ARRAY
        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
