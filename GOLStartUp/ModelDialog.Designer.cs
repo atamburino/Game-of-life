@@ -51,7 +51,7 @@ namespace GOLStartUp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(59, 81);
+            this.label2.Location = new System.Drawing.Point(24, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 1;
@@ -60,16 +60,16 @@ namespace GOLStartUp
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(126, 79);
+            this.numericUpDown1.Location = new System.Drawing.Point(62, 30);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(136, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(111, 20);
             this.numericUpDown1.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(62, 133);
+            this.button1.Location = new System.Drawing.Point(179, 30);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 22);
+            this.button1.Size = new System.Drawing.Size(72, 20);
             this.button1.TabIndex = 3;
             this.button1.Text = "Randomize";
             this.button1.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@ namespace GOLStartUp
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button2.Location = new System.Drawing.Point(62, 186);
+            this.button2.Location = new System.Drawing.Point(81, 71);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 19);
             this.button2.TabIndex = 4;
@@ -89,7 +89,7 @@ namespace GOLStartUp
             // button3
             // 
             this.button3.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button3.Location = new System.Drawing.Point(193, 186);
+            this.button3.Location = new System.Drawing.Point(156, 71);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(69, 19);
             this.button3.TabIndex = 5;
@@ -101,7 +101,7 @@ namespace GOLStartUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 287);
+            this.ClientSize = new System.Drawing.Size(301, 98);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
