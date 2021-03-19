@@ -359,15 +359,21 @@ namespace GOLStartUp
         // Cell Color
         private void cellColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (colorDialogBackgroundM.ShowDialog() == DialogResult.OK) ;
+            {
+                Color uniC = colorDialogBackgroundM.Color;
+                cellColor = uniC;
+                graphicsPanel1.Invalidate();
+            }
         }
         // Grid Color
         private void gridColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (colorDialogGrid.ShowDialog() == DialogResult.OK) ;
+            if (colorDialogBackgroundM.ShowDialog() == DialogResult.OK) ;
             {
-                Color Gridcolor = colorDialogGrid.Color;
-
+                Color gridC = colorDialogBackgroundM.Color;
+                gridColor = gridC;
+                graphicsPanel1.Invalidate();
             }
         }
         // MISS CLICK DEAD ARRAY
