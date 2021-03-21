@@ -25,6 +25,9 @@ namespace GOLStartUp
         // The Timer class
         Timer timer = new Timer();
 
+        // Alive count
+        int Alive = 0;
+
         // Generation count
         int generations = 0;
 
@@ -84,6 +87,10 @@ namespace GOLStartUp
 
                 }
             }
+
+            // Alive count logic 
+
+
             // Increment generation count
             generations++;
 
@@ -93,6 +100,9 @@ namespace GOLStartUp
             universe = scratchPad;
             scratchPad = temp;
 
+            // Update status strip Alive
+            toolStripStatusLabelAlive.Text = "Alive = " + Alive.ToString();
+            graphicsPanel1.Invalidate();
 
             // Update status strip generations
             toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
