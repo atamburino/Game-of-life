@@ -34,6 +34,12 @@ namespace GOLStartUp
         // Seed 
         int seed = 0;
 
+        // Pen 
+        bool PenOn = true;
+
+        // HUD
+        bool HUD = true;
+
         public Form1()
         {
             InitializeComponent();
@@ -102,15 +108,22 @@ namespace GOLStartUp
         private void graphicsPanel1_Paint(object sender, PaintEventArgs e)
 
         {
-            // FLOATS !!!
-            // Calculate the width and height of each cell in pixels
             // CELL WIDTH = WINDOW WIDTH / NUMBER OF CELLS IN X
             int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
             // CELL HEIGHT = WINDOW HEIGHT / NUMBER OF CELLS IN Y
             int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
 
             // A Pen for drawing the grid lines (color, width)
-            Pen gridPen = new Pen(gridColor, 1);
+            Pen gridPen;
+
+            if (PenOn)
+            {
+                gridPen = new Pen(gridColor, 1);
+            }
+            else
+            {
+                gridPen = new Pen(graphicsPanel1.BackColor, 1);
+            }
 
             // A Brush for filling living cells interiors (color)
             Brush cellBrush = new SolidBrush(cellColor);
@@ -340,18 +353,20 @@ namespace GOLStartUp
         // Options 
         private void opttionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Options dwg = new Options();
-            
-            if (dwg.ShowDialog(this) == DialogResult.OK)
+            Options dlg = new Options();
+
+            dlg.SetNumberSeconds(timer.Interval);
+            dlg.SetNumberWidth(universe.GetLength(0));
+            dlg.SetNumberHeight(universe.GetLength(1));
+            if (DialogResult.OK == dlg.ShowDialog())
             {
-                
-                
+                timer.Interval = dlg.GetNumberSeconds();
+                universe = new bool[dlg.GetNumberHeight(), dlg.GetNumberWidth()];
+                scratchPad = new bool[dlg.GetNumberHeight(), dlg.GetNumberWidth()];
             }
-            else
-            {
-                
-            }
-            dwg.Dispose();
+
+            //tel windows you need to regulate
+            graphicsPanel1.Invalidate();
         }
         // Forbackground Color
         private void backColorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -396,6 +411,32 @@ namespace GOLStartUp
        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
        {
 
+        }
+        /// View Menu /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        private void neighborCountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (neigborNum == true)
+            {
+                neigborNum = false;
+            }
+            else
+            {
+                neigborNum = true;
+            }
+            graphicsPanel1.Invalidate();
+        }
+
+        private void gridToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PenOn == true)
+            {
+                PenOn = false;
+            }
+            else
+            {
+                PenOn = true;
+            }
+            graphicsPanel1.Invalidate();
         }
     }
 }
