@@ -28,6 +28,9 @@ namespace GOLStartUp
         // Generation count
         int generations = 0;
 
+        // Neigbors numn
+        bool neigborNum = true;
+
         // Seed 
         int seed = 0;
 
@@ -112,19 +115,32 @@ namespace GOLStartUp
             // A Brush for filling living cells interiors (color)
             Brush cellBrush = new SolidBrush(cellColor);
 
+            // Cell Number Font 
+            Font font = new Font("Arial", 10f);
+            StringFormat stringFormat = new StringFormat();
+            stringFormat.Alignment = StringAlignment.Center;
+            stringFormat.LineAlignment = StringAlignment.Center;
+
             // Iterate through the universe in the y, top to bottom
             for (int y = 0; y < universe.GetLength(1); y++)
             {
                 // Iterate through the universe in the x, left to right
                 for (int x = 0; x < universe.GetLength(0); x++)
                 {
-                    // RectangleF used for floats
+                    
                     // A rectangle to represent each cell in pixels
                     Rectangle cellRect = Rectangle.Empty;
                     cellRect.X = x * cellWidth;
                     cellRect.Y = y * cellHeight;
                     cellRect.Width = cellWidth;
                     cellRect.Height = cellHeight;
+
+                    // font placment 
+                    int neighbors = CountNeighborsToroidal(x, y);
+                    if (neighbors > 0 && neigborNum)
+                    {
+                        e.Graphics.DrawString(neighbors.ToString(), font, Brushes.Black, cellRect, stringFormat);
+                    }
 
                     // Fill the cell with a brush if alive
                     if (universe[x, y] == true)
