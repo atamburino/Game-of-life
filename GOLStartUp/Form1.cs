@@ -322,7 +322,90 @@ namespace GOLStartUp
                 writer.Close();
             }
         }
+        // Open Menu toolstrip
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
 
+            dlg.Filter = "All Files|*.*|Cells|*.cells";
+            dlg.FilterIndex = 2;
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                StreamReader reader = new StreamReader(dlg.FileName);
+
+                // Create a couple variables to calculate the width and height
+                // of the data in the file.
+                int maxWidth = 0;
+                int maxHeight = 0;
+
+                // Iterate through the file once to get its size.
+                while (!reader.EndOfStream)
+                {
+                    // Read one row at a time.
+                    string row = reader.ReadLine();
+
+                    // If the row begins with '!' then it is a comment
+                    // and should be ignored.
+                    if (row[0] == '!') continue;
+
+                    // If the row is not a comment then it is a row of cells.
+                    // Increment the maxHeight variable for each row read.
+                    if (row[0] != '!')
+                    {
+                        maxWidth = row.Length;
+                        maxHeight++;
+                        // Get the length of the current row string
+                        // and adjust the maxWidth variable if necessary.
+                    }
+                }
+
+                // Resize the current universe and scratchPad
+                // to the width and height of the file calculated above.
+
+                // The universe array
+                universe = new bool[maxWidth, maxHeight];
+
+                //The scratchpad array
+                scratchPad = new bool[maxWidth, maxHeight];
+
+                // Reset the file pointer back to the beginning of the file.
+                reader.BaseStream.Seek(0, SeekOrigin.Begin);
+                int yPos = 0;
+                // Iterate through the file again, this time reading in the cells.
+                while (!reader.EndOfStream)
+                {
+                    // Read one row at a time.
+                    string row = reader.ReadLine();
+
+                    // If the row begins with '!' then
+                    // it is a comment and should be ignored.
+                    if (row[0] == '!') continue;
+                    // If the row is not a comment then 
+                    // it is a row of cells and needs to be iterated through.
+                    for (int xPos = 0; xPos < maxWidth; xPos++)
+                    {
+                        // If row[xPos] is a 'O' (capital O) then
+                        // set the corresponding cell in the universe to alive.
+                        if (row[xPos] == 'O')
+                        {
+                            universe[xPos, yPos] = true;
+                        }
+                        // If row[xPos] is a '.' (period) then
+                        // set the corresponding cell in the universe to dead.
+                        else if (row[xPos] == '.')
+                        {
+                            universe[xPos, yPos] = false;
+                        }
+                    }
+                    yPos++;
+                }
+                // Tell Windows you need to repaint
+                graphicsPanel1.Invalidate();
+                // Close the file.
+                reader.Close();
+            }
+        }
         ///// TOOL STRIP BUTTONS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // START BUTTON 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -483,6 +566,5 @@ namespace GOLStartUp
             }
             graphicsPanel1.Invalidate();
         }
-
     }
 }
