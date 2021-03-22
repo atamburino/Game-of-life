@@ -435,8 +435,8 @@ namespace GOLStartUp
         }
 
 
-        ///// MODEL MENU /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // seed
+        ///// RANDOM MENU /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // SEED
         private void seedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ModelDialog dlg = new ModelDialog();
@@ -464,7 +464,7 @@ namespace GOLStartUp
             }
             graphicsPanel1.Invalidate();
         }
-        // time
+        // TIME
         private void timeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
@@ -488,7 +488,7 @@ namespace GOLStartUp
         }
         //Settings//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        // Options 
+        // OPTIONS 
         private void opttionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Options dlg = new Options();
@@ -545,8 +545,22 @@ namespace GOLStartUp
                 graphicsPanel1.Invalidate();
             }
         }
+        // Reset 
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Iterate through the universe in the y, top to bottom
+            for (int y = 0; y < universe.GetLength(1); y++)
+            {
+                // Iterate through the universe in the x, left to right
+                for (int x = 0; x < universe.GetLength(0); x++)
+                {
+                    universe[x, y] = false;
+                }
+            }
+            graphicsPanel1.Invalidate();
+        }
         // MISS CLICK DEAD ARRAY
-       private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
        {
 
         }
