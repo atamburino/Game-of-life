@@ -39,6 +39,7 @@ namespace GOLStartUp
 
         // Pen 
         bool PenOn = true;
+        bool PenTen = true;
 
         // HUD
         bool HUDon = true;
@@ -129,16 +130,21 @@ namespace GOLStartUp
 
             // A Pen for drawing the grid lines (color, width)
             Pen gridPen;
+            Pen gridTen;
 
             if (PenOn)
             {
                 gridPen = new Pen(gridColor, 1);
+                gridTen = new Pen(gridColor, 3);
             }
             else
             {
                 gridPen = new Pen(graphicsPanel1.BackColor, 1);
+                gridTen = new Pen(graphicsPanel1.BackColor, 1);
             }
 
+
+            
             // A Brush for filling living cells interiors (color)
             Brush cellBrush = new SolidBrush(cellColor);
 
@@ -164,37 +170,41 @@ namespace GOLStartUp
                 }
             // Iterate through the universe in the y, top to bottom
                 for (int y = 0; y < universe.GetLength(1); y++)
-            {
-                // Iterate through the universe in the x, left to right
-                for (int x = 0; x < universe.GetLength(0); x++)
                 {
+                    // Iterate through the universe in the x, left to right
+                    for (int x = 0; x < universe.GetLength(0); x++)
+                    {
                     
-                    // A rectangle to represent each cell in pixels
-                    Rectangle cellRect = Rectangle.Empty;
-                    cellRect.X = x * cellWidth;
-                    cellRect.Y = y * cellHeight;
-                    cellRect.Width = cellWidth;
-                    cellRect.Height = cellHeight;
+                        // A rectangle to represent each cell in pixels
+                        Rectangle cellRect = Rectangle.Empty;
+                        cellRect.X = x * cellWidth;
+                        cellRect.Y = y * cellHeight;
+                        cellRect.Width = cellWidth;
+                        cellRect.Height = cellHeight;
 
-                    // font placment 
-                    int neighbors = CountNeighborsToroidal(x, y);
-                    if (neighbors > 0 && neigborNum)
-                    {
-                        e.Graphics.DrawString(neighbors.ToString(), font, Brushes.Black, cellRect, stringFormat);
+                        // font placment 
+                        int neighbors = CountNeighborsToroidal(x, y);
+                        if (neighbors > 0 && neigborNum)
+                        {
+                            e.Graphics.DrawString(neighbors.ToString(), font, Brushes.Black, cellRect, stringFormat);
+                        }
+
+                        // Fill the cell with a brush if alive
+                        if (universe[x, y] == true)
+                        {
+                            e.Graphics.FillRectangle(cellBrush, cellRect);
+                        }
+
+                        // Outline the cell with a pen
+                        e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
+
+                    if (x % 10 == 0)
+                        e.Graphics.DrawLine(gridTen, x * cellWidth, 0, x * cellWidth, graphicsPanel1.ClientSize.Height);
+
+                    if (y % 10 == 0)
+                        e.Graphics.DrawLine(gridTen, 0, y * cellHeight, graphicsPanel1.ClientSize.Width, y * cellHeight);
                     }
-
-                    // Fill the cell with a brush if alive
-                    if (universe[x, y] == true)
-                    {
-                        e.Graphics.FillRectangle(cellBrush, cellRect);
-                    }
-
-                    // Outline the cell with a pen
-                    e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
-
-                   
                 }
-            }
 
             // Cleaning up pens and brushes
             gridPen.Dispose();
