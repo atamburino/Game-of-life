@@ -82,10 +82,10 @@ namespace GOLStartUp
             this.colorDialogGrid = new System.Windows.Forms.ColorDialog();
             this.colorDialogBackgroundM = new System.Windows.Forms.ColorDialog();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cellColorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gridColorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsPanel1 = new GOLStartUp.GraphicsPanel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -492,13 +492,6 @@ namespace GOLStartUp
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(171, 92);
             // 
-            // newToolStripMenuItem1
-            // 
-            this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            this.newToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
-            this.newToolStripMenuItem1.Text = "New";
-            this.newToolStripMenuItem1.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
             // backgroundColorToolStripMenuItem
             // 
             this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
@@ -519,6 +512,13 @@ namespace GOLStartUp
             this.gridColorToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
             this.gridColorToolStripMenuItem1.Text = "Grid Color";
             this.gridColorToolStripMenuItem1.Click += new System.EventHandler(this.gridColorToolStripMenuItem_Click);
+            // 
+            // newToolStripMenuItem1
+            // 
+            this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
+            this.newToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
+            this.newToolStripMenuItem1.Text = "New";
+            this.newToolStripMenuItem1.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // graphicsPanel1
             // 
@@ -543,7 +543,7 @@ namespace GOLStartUp
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Game Of Life";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

@@ -111,7 +111,7 @@ namespace GOLStartUp
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModelDialog";
-            this.Text = "Form2";
+            this.Text = "Random";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
