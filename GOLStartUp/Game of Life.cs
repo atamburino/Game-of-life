@@ -159,8 +159,9 @@ namespace GOLStartUp
                 stringFormat.LineAlignment = StringAlignment.Far;
 
                 // Draw the text
-                e.Graphics.DrawString(str, font1, Brushes.Blue, graphicsPanel1.ClientRectangle, stringFormat); 
-            }
+                e.Graphics.DrawString("Generations " + generations.ToString() + "\nAlive " + Alive.ToString(), font1, Brushes.Blue, graphicsPanel1.ClientRectangle, stringFormat);
+                    
+                }
             // Iterate through the universe in the y, top to bottom
                 for (int y = 0; y < universe.GetLength(1); y++)
             {
@@ -301,6 +302,8 @@ namespace GOLStartUp
                     universe[x, y] = false;
                 }
             }
+            Alive = 0;
+            generations = 0;
             graphicsPanel1.Invalidate();
         }
         // Saveing menu toolstrip /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
