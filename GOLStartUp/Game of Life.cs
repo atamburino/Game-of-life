@@ -41,8 +41,7 @@ namespace GOLStartUp
         bool PenOn = true;
 
         // HUD
-        bool HUD = true;
-
+        bool HUDon = true;
         // Timer 
         public Form1()
         {
@@ -108,6 +107,7 @@ namespace GOLStartUp
             // Update status strip generations
             toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
             graphicsPanel1.Invalidate();
+
         }
 
         // The event called by the timer every Interval milliseconds.
@@ -145,8 +145,21 @@ namespace GOLStartUp
             stringFormat.Alignment = StringAlignment.Center;
             stringFormat.LineAlignment = StringAlignment.Center;
 
+            // HUD
+            string str = "Welcome to Game of life";
+            using (Font font1 = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point))
+           if (HUDon)
+           {
+                // Create a StringFormat 
+                StringFormat stringFormat1 = new StringFormat();
+                stringFormat.Alignment = StringAlignment.Near;
+                stringFormat.LineAlignment = StringAlignment.Far;
+
+                // Draw the text
+                e.Graphics.DrawString(str, font1, Brushes.Blue, graphicsPanel1.ClientRectangle, stringFormat); 
+            }
             // Iterate through the universe in the y, top to bottom
-            for (int y = 0; y < universe.GetLength(1); y++)
+                for (int y = 0; y < universe.GetLength(1); y++)
             {
                 // Iterate through the universe in the x, left to right
                 for (int x = 0; x < universe.GetLength(0); x++)
@@ -175,7 +188,7 @@ namespace GOLStartUp
                     // Outline the cell with a pen
                     e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
 
-
+                   
                 }
             }
 
@@ -564,7 +577,7 @@ namespace GOLStartUp
             graphicsPanel1.Invalidate();
         }
         // MISS CLICK DEAD ARRAY///////////////////////////////////////////////////////////////////////
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)//////////
        { }
         ///////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -592,6 +605,19 @@ namespace GOLStartUp
             else
             {
                 PenOn = true;
+            }
+            graphicsPanel1.Invalidate();
+        }
+        // HUD View
+        private void hUDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (HUDon == true)
+            {
+                HUDon = false;
+            }
+            else
+            {
+                HUDon = true;
             }
             graphicsPanel1.Invalidate();
         }
