@@ -57,6 +57,7 @@ namespace GOLStartUp
         private void NextGeneration()
         {
             // Iterate through the universe in the y, top to bottom
+            Alive = 0;
             for (int y = 0; y < universe.GetLength(1); y++)
             {
                 // Iterate through the universe in the x, left to right
@@ -74,14 +75,16 @@ namespace GOLStartUp
                     {
                         scratchPad[x, y] = false;
                     }
-                    else if (universe[x, y] == true && count == 2 || count == 3)
+                    else if (universe[x, y] == true && count == 2 || universe[x, y] == true && count == 3)
                     {
                         scratchPad[x, y] = true;
+                        Alive++;
                     }
 
                     if (universe[x, y] == false && count == 3)
                     {
                         scratchPad[x, y] = true;
+                        Alive++;
                     }
                     // Turn on/off in the scratchPad
 
