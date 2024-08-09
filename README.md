@@ -14,7 +14,7 @@ This project is an implementation of Conway's Game of Life in C#. Conway's Game 
 1. **Clone the Repository**:
 
 2. **Open the Project**:
-   - Open the solution file `ConwaysGameOfLife.sln` in Visual Studio or your preferred IDE.
+   - Open the solution file `GOLStartUp.sln` in Visual Studio or your preferred IDE.
 
 3. **Build the Project**:
    - In Visual Studio, build the solution by selecting `Build` > `Build Solution` from the menu, or by pressing `Ctrl+Shift+B`.
